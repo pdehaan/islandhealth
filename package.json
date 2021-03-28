@@ -1,18 +1,29 @@
 {
   "name": "islandhealth",
-  "version": "1.0.0",
   "description": "",
-  "bin": "index.js",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "version": "1.0.0",
   "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
-  "license": "MPL-2.0",
+  "bin": {
+    "islandhealth": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/pdehaan/islandhealth/issues"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/pdehaan/islandhealth#readme",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdehaan/islandhealth.git"
+  },
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
