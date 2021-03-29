@@ -1,24 +1,16 @@
 #!/usr/bin/env node
 
-const axios = require("axios");
-const cheerio = require("cheerio");
+const lib = require("./lib");
 
 main();
 
 async function main() {
-  const uri = "https://www.islandhealth.ca/learn-about-health/covid-19/covid-19-vaccine";
-  const h2Text = "Currently eligible";
-  const { data: html } = await axios.get(uri);
-  const $ = cheerio.load(html);
-  const h3s = $("h2 + h3")
-    .filter((i, h3) => $(h3.previousSibling.prev).text() === h2Text)
-    .get();
-
-  if (h3s.length === 0) {
-    console.error("element not found.");
+  try {
+    const current = await lib.getCurrent();
+    console.log(current);
+  } catch (err) {
+    console.error(err.message);
     process.exitCode = 1;
     return;
   }
-  const current = $(h3s[0]);
-  console.log(`${h2Text}: ${current?.text()}`);
 }
