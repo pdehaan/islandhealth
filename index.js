@@ -10,15 +10,15 @@ async function main() {
   const h2Text = "Currently eligible";
   const { data: html } = await axios.get(uri);
   const $ = cheerio.load(html);
-  const els = $("h2 + h3")
+  const h3s = $("h2 + h3")
     .filter((i, h3) => $(h3.previousSibling.prev).text() === h2Text)
     .get();
 
-  if (els.length === 0) {
-    console.error("h3 element not found.");
+  if (h3s.length === 0) {
+    console.error("element not found.");
     process.exitCode = 1;
     return;
   }
-  const current = $(els[0]);
+  const current = $(h3s[0]);
   console.log(`${h2Text}: ${current?.text()}`);
 }
