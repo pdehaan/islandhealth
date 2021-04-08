@@ -6,8 +6,8 @@ async function getCurrent() {
   const h2Text = "Currently eligible";
   const { data: html } = await axios.get(uri);
   const $ = cheerio.load(html);
-  const h3s = $("h2 + h3")
-    .filter((i, h3) => $(h3.previousSibling.prev).text() === h2Text)
+  const h3s = $("h2 + p + h3")
+    // .filter((i, h3) => $(h3.previousSibling.prev).text() === h2Text)
     .get();
 
   if (h3s.length === 0) {
